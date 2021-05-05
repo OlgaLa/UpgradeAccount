@@ -129,4 +129,5 @@ gradle-app.setting
 output.txt
 
 .DS_Store
+gradle.properties
 .env
