@@ -2,6 +2,8 @@ name: upgrade-account-tests
 on: [push]
 jobs:
   build:
+    env:
+      BASE_URL: https://miro.com/app/dashboard/
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -9,7 +11,7 @@ jobs:
       - name: Run gradle tests in Docker
         run: |
           docker run --rm \
-          --env BASE_URL='https://miro.com/app/dashboard/' \
+          --env BASE_URL=${{ env.BASE_URL}} \
           --env PASSWORD=${{ secrets.PASSWORD }} \
           --env USER_NAME=${{ secrets.USER_NAME }} \
           -v "$PWD":/home/gradle/project -w \
