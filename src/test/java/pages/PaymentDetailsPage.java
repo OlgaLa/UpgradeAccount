@@ -40,10 +40,12 @@ public class PaymentDetailsPage extends PageBase {
     }
 
     public String getFeatureDescription() {
+        actionBot.waitFor(FEATURE_DESCRIPTION);
         return actionBot.getText(FEATURE_DESCRIPTION);
     }
 
     public String getOperationDescription() {
+        actionBot.waitFor(OPERATION_DESCRIPTION);
         return actionBot.getText(OPERATION_DESCRIPTION);
     }
 
@@ -62,10 +64,12 @@ public class PaymentDetailsPage extends PageBase {
     }
 
     public void clickPurchaseButton() {
+        actionBot.waitFor(PURCHASE_BUTTON);
         actionBot.click(PURCHASE_BUTTON);
     }
 
     public String getCreditCardErrorMessage() {
+        actionBot.waitFor(CREDIT_CARD_ERROR_MESSAGE);
         return actionBot.getText(CREDIT_CARD_ERROR_MESSAGE);
     }
 }

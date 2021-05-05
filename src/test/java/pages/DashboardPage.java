@@ -13,6 +13,7 @@ public class DashboardPage extends PageBase {
     }
 
     public UpgradeAccountPage clickUpgradeButton() {
+        actionBot.waitFor(UPGRADE_BUTTON);
         actionBot.click(UPGRADE_BUTTON);
         return new UpgradeAccountPage(driver);
     }

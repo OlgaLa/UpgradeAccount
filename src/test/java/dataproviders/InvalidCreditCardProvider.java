@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class InvalidCreditCardProvider implements ArgumentsProvider {
 
     @Override
-    public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
+    public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
         return Stream.of(
                 Arguments.of("5711270041703456", "03/30", "737", "Your card number is invalid."),
                 Arguments.of("571127004170345", "03/30", "737", "Your card number is incomplete."),

@@ -2,6 +2,8 @@ package tests;
 
 import base.TestBase;
 import dataproviders.InvalidCreditCardProvider;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,6 +14,8 @@ import pages.UpgradeAccountPage;
 
 @DisplayName("Upgrading account to Team")
 public class UpgradingAccountToTeamTest extends TestBase {
+
+    private static final Log LOG = LogFactory.getLog(UpgradingAccountToTeamTest.class);
 
     SoftAssertions softAssertions = new SoftAssertions();
     DashboardPage dashboardPage;
@@ -25,13 +29,16 @@ public class UpgradingAccountToTeamTest extends TestBase {
 
     @BeforeEach
     public void openPaymentPage() {
+        LOG.info("Open account page");
         accountPage = dashboardPage.clickUpgradeButton();
+        LOG.info("Open payment page");
         paymentDetailsPage = accountPage.clickUpgradeTeamPlanButton();
     }
 
     @AfterEach
     public void refresh() {
-         driver.navigate().refresh();
+        driver.navigate().refresh();
+        LOG.info("Refresh the page");
     }
 
     @Test
@@ -53,6 +60,7 @@ public class UpgradingAccountToTeamTest extends TestBase {
 
         softAssertions.assertAll();
 
+        LOG.info(getClass().getSimpleName() + " passed");
     }
 
     @ParameterizedTest
@@ -64,9 +72,12 @@ public class UpgradingAccountToTeamTest extends TestBase {
         paymentDetailsPage.enterCreditCardDetails(cardNumber, data, cvc);
         paymentDetailsPage.clickPurchaseButton();
 
+        LOG.info("Error message: " + errorMessage);
+        LOG.info("Actual message: " + paymentDetailsPage.getCreditCardErrorMessage());
         softAssertions.assertThat(errorMessage).isEqualTo(paymentDetailsPage.getCreditCardErrorMessage());
         softAssertions.assertAll();
 
+        LOG.info(getClass().getSimpleName() + " passed");
     }
 
     private void checkTheAmount(String price, String operationDescription, PaymentDetailsPage paymentDetailsPage) {

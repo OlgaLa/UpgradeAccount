@@ -1,0 +1,28 @@
+name: upgrade-account-tests
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        name: Checkout code
+      - name: Run gradle tests in Docker
+        run: |
+          docker run --rm \
+          --env BASE_URL='https://miro.com/app/dashboard/' \
+          --env PASSWORD=${{ secrets.PASSWORD }} \
+          --env USER_NAME=${{ secrets.USER_NAME }} \
+          -v "$PWD":/home/gradle/project -w \
+          /home/gradle/project leapci/gradle-chrome:jdk-11 gradle test -q
+      - uses: actions/upload-artifact@v2
+        if: always()
+        name: Upload test reports
+        with:
+          name: test-reports
+          path: build/reports/
+      - uses: actions/upload-artifact@v2
+        if: always()
+        name: Upload test results
+        with:
+          name: test-results
+          path: build/test-results/
