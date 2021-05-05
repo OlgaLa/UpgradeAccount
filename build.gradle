@@ -23,7 +23,10 @@ dependencies {
 
 test {
     systemProperty "headless", System.getProperty("headless")
-    environment = [ BASE_URL: BASE_URL, USER_NAME: USER_NAME, PASSWORD: PASSWORD]
+    def env = file("gradle.properties")
+    if (env.exists()) {
+        environment = [ BASE_URL: BASE_URL, USER_NAME: USER_NAME, PASSWORD: PASSWORD]
+    }
 
 //    onlyIf {
 //
