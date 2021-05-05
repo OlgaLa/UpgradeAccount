@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "co.uzzu.dotenv.gradle" version "1.1.0"
 }
 
 group 'org.example'
@@ -21,5 +22,9 @@ dependencies {
 }
 
 test {
+    systemProperty "headless", System.getProperty("headless")
+    if(env.BASE_URL.isPresent()) {
+         environment = [ BASE_URL: env.BASE_URL.value, USER_NAME: env.USER_NAME.value, PASSWORD: env.PASSWORD.value]
+    }
     useJUnitPlatform()
 }

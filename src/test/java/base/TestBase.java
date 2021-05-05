@@ -22,7 +22,17 @@ public class TestBase {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--allowed-ips");
-        options.addArguments("--headless");
+
+        String headless = System.getProperty("headless") != null ? System.getProperty("headless").toLowerCase() : "true";
+
+        switch (headless) {
+            case "false":
+                break;
+            default:
+                options.addArguments("--headless");
+                break;
+        }
+
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
