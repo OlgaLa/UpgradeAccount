@@ -8,9 +8,13 @@ The project contains UI tests for upgrading free account to a team
 5. Go to the project folder
 6. Create the file `gradle.properties`
 7. Add BASE_URL, USER_NAME and PASSWORD there, e.g.
-    BASE_URL=https://miro.com/app/dashboard/
-    USER_NAME=${USER_NAME}
-    PASSWORD=${PASSWORD}
+
+    `BASE_URL=https://miro.com/app/dashboard/` 
+    
+    `USER_NAME=${USER_NAME}` 
+    
+    `PASSWORD=${PASSWORD}` 
+    
 9. Run the command in terminal:
 
 `gradle test` or `./gradlew test` (for Windows: `gradlew test`)
@@ -28,9 +32,13 @@ If you don't have Gradle and/or JDK installed on your machine you can run tests 
 3. Go to the project folder
 4. Create the file `gradle.properties`
 5. Add BASE_URL, USER_NAME and PASSWORD there, e.g.
-    BASE_URL=https://miro.com/app/dashboard/
-    USER_NAME=${USER_NAME}
-    PASSWORD=${PASSWORD}
+
+    `BASE_URL=https://miro.com/app/dashboard/` 
+    
+    `USER_NAME=${USER_NAME}` 
+    
+    `PASSWORD=${PASSWORD}` 
+   
 6. Run the command in terminal:
 
 Linux/Mac: 
