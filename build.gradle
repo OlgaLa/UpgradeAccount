@@ -27,11 +27,5 @@ test {
     if (env.exists()) {
         environment = [ BASE_URL: BASE_URL, USER_NAME: USER_NAME, PASSWORD: PASSWORD]
     }
-
-//    onlyIf {
-//
-//    }(env.BASE_URL.isPresent()) {
-//         environment = [ BASE_URL: env.BASE_URL.value, USER_NAME: env.USER_NAME.value, PASSWORD: env.PASSWORD.value]
-//    }
     useJUnitPlatform()
 }
