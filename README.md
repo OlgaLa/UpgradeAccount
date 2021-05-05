@@ -22,12 +22,23 @@ If you don't have Gradle and/or JDK installed on your machine you can run tests 
 
 Linux/Mac: 
 ```bash
-docker run --rm --env BASE_URL='https://miro.com/app/dashboard/' --env USER_NAME=${YOUR_USER_NAME} --env PASSWORD=${PASSWORD} -v "$PWD":/home/gradle/project -w /home/gradle/project leapci/gradle-chrome:jdk-11 gradle test -q
+docker run --rm \
+    --env BASE_URL='https://miro.com/app/dashboard/' \
+    --env USER_NAME=${YOUR_USER_NAME} \
+    --env PASSWORD=${PASSWORD} \
+    -v "$PWD":/home/gradle/project \
+    -w /home/gradle/project leapci/gradle-chrome:jdk-11 gradle test -q
 ```
 
 Windows in PowerShell: 
+
 ```powershell
-docker run --rm --env BASE_URL='https://miro.com/app/dashboard/' --env USER_NAME=${YOUR_USER_NAME} --env PASSWORD=${PASSWORD} -v "$(PWD):/home/gradle/project" -w /home/gradle/project leapci/gradle-chrome:jdk-11 gradle test -q
+docker run --rm `
+    --env BASE_URL='https://miro.com/app/dashboard/' `
+    --env USER_NAME=${YOUR_USER_NAME} `
+    --env PASSWORD=${PASSWORD} `
+    -v "$(PWD):/home/gradle/project" `
+    -w /home/gradle/project leapci/gradle-chrome:jdk-11 gradle test -q
 ```
 
 ## View the test report
