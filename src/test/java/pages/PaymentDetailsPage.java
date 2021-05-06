@@ -1,6 +1,7 @@
 package pages;
 
 import base.PageBase;
+import dataproviders.CreditCard;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,7 +17,7 @@ public class PaymentDetailsPage extends PageBase {
     private static final By TEAM_MEMBERS_OPTIONS = By.cssSelector("div.rtb-select__options>div>button.rtb-select__option");
     private static final By PURCHASE_BUTTON = By.cssSelector("[data-autotest-id='billing-actions__purchase-button']");
     private static final By CREDIT_CARD_NUMBER = By.cssSelector("[data-elements-stable-field-name='cardNumber']");
-    private static final By CREDIT_CARD_DATA = By.cssSelector("[data-elements-stable-field-name='cardExpiry']");
+    private static final By CREDIT_CARD_EXPIRY_DATE = By.cssSelector("[data-elements-stable-field-name='cardExpiry']");
     private static final By CREDIT_CARD_CVC = By.cssSelector("[data-elements-stable-field-name='cardCvc']");
     private static final By CREDIT_CARD_ERROR_MESSAGE = By.cssSelector("[data-autotest-id='stripe-token-card-input__card-error']");
     private static final By CREDIT_CARD_FRAME = By.cssSelector("iframe[title='Secure card payment input frame']");
@@ -55,11 +56,11 @@ public class PaymentDetailsPage extends PageBase {
         actionBot.dropdownRandomClick(TEAM_MEMBERS_OPTIONS);
     }
 
-    public void enterCreditCardDetails(String cardNumber, String data, String cvc) {
+    public void enterCreditCardDetails(CreditCard creditCard) {
         actionBot.switchToFrame(CREDIT_CARD_FRAME);
-        actionBot.sendKeys(CREDIT_CARD_NUMBER, cardNumber);
-        actionBot.sendKeys(CREDIT_CARD_DATA, data);
-        actionBot.sendKeys(CREDIT_CARD_CVC, cvc);
+        actionBot.sendKeys(CREDIT_CARD_NUMBER, creditCard.getCardNumber());
+        actionBot.sendKeys(CREDIT_CARD_EXPIRY_DATE, creditCard.getExpiryDate());
+        actionBot.sendKeys(CREDIT_CARD_CVC, creditCard.getCvv());
         actionBot.switchToDefaultContent();
     }
 

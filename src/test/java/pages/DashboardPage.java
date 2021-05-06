@@ -17,5 +17,4 @@ public class DashboardPage extends PageBase {
         actionBot.click(UPGRADE_BUTTON);
         return new UpgradeAccountPage(driver);
     }
-
 }

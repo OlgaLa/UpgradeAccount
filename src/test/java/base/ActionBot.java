@@ -13,6 +13,7 @@ public class ActionBot {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
+    Random random = new Random();
 
     public ActionBot(WebDriver driver) {
         this.driver = driver;
@@ -35,7 +36,6 @@ public class ActionBot {
 
     public String dropdownRandomClick(By locator) {
         List<WebElement> options = driver.findElements(locator);
-        Random random = new Random();
         int index = random.nextInt(options.size());
         String text = options.get(index).getText();
         wait.until(ExpectedConditions.visibilityOf(options.get(index)));

@@ -2,7 +2,7 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 
-public abstract class PageBase extends TestBase{
+public abstract class PageBase extends TestBase {
 
     protected WebDriver driver;
     protected ActionBot actionBot;
@@ -11,5 +11,4 @@ public abstract class PageBase extends TestBase{
         actionBot = new ActionBot(driver);
         this.driver = driver;
     }
-
 }

@@ -20,5 +20,4 @@ public class UpgradeAccountPage extends PageBase {
         actionBot.click(UPGRADE_TEAM_PLAN_BUTTON);
         return new PaymentDetailsPage(driver);
     }
-
 }

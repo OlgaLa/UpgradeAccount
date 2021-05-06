@@ -23,14 +23,11 @@ public class TestBase {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--allowed-ips");
 
-        String headless = System.getProperty("headless") != null ? System.getProperty("headless").toLowerCase() : "true";
+        final String headlessProperty = System.getProperty("headless");
+        boolean useHeadlessMode = headlessProperty.isEmpty() || Boolean.parseBoolean(headlessProperty);
 
-        switch (headless) {
-            case "false":
-                break;
-            default:
-                options.addArguments("--headless");
-                break;
+        if (useHeadlessMode) {
+            options.addArguments("--headless");
         }
 
         driver = new ChromeDriver(options);
