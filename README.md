@@ -55,6 +55,28 @@ docker run --rm `
     -v "$(PWD):/home/gradle/project" `
     -w /home/gradle/project leapci/gradle-chrome:jdk-11 gradle test -q
 ```
+If you do not want to create `gradle.properties` you can use the following command to run tests:
+
+Linux/Mac: 
+```bash
+docker run --rm \
+    --env BASE_URL='${Base_Url}' \
+    --env USER_NAME=${User_Name} \
+    --env PASSWORD='${Password}' \
+    -v "$PWD":/home/gradle/project 
+    -w /home/gradle/project leapci/gradle-chrome:jdk-11 gradle test -q
+```
+
+Windows in PowerShell: 
+
+```powershell
+docker run --rm `
+    --env BASE_URL='${Base_Url}' `
+    --env USER_NAME=${User_Name} `
+    --env PASSWORD='${Password}' `
+    -v "$(PWD):/home/gradle/project" `
+    -w /home/gradle/project leapci/gradle-chrome:jdk-11 gradle test -q
+```
 
 ## View the test report
 
